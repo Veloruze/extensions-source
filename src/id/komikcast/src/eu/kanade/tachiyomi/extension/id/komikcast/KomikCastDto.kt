@@ -96,7 +96,7 @@ fun SeriesItem.toSManga(): SManga = SManga.create().apply {
 }
 
 fun ChapterItem.toSChapter(seriesSlug: String?): SChapter = SChapter.create().apply {
-    val chapterIndex = data.index ?: chapterIndex ?: 0f
+    val chapterIndex = (data.index ?: chapterIndex)!!
     val formattedIndex = formatChapterNumber(chapterIndex)
     url = "/series/$seriesSlug/chapters/$chapterIndex"
     name = if (data.title.isNullOrBlank()) {
